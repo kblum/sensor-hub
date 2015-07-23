@@ -24,3 +24,16 @@ Install dependencies:
 Deactivation the virtual environment:
 
     deactivate
+
+
+## Running the Project
+
+Activate the virtual environment.
+
+Run database migrations:
+
+    python manage.py migrate
+
+Start the development server:
+
+    python manage.py runserver
