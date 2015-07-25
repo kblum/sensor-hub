@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    # applications for project
+    'hub.sensorhub',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,7 +90,8 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# list of timezones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+TIME_ZONE = os.environ.get('TIME_ZONE', 'UTC')
 
 USE_I18N = True
 

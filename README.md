@@ -30,6 +30,10 @@ Deactivation the virtual environment:
 
 Activate the virtual environment.
 
+Create schema migrations if any changes were made to models:
+
+    python manage.py makemigrations
+
 Run database migrations:
 
     python manage.py migrate
