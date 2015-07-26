@@ -13,7 +13,7 @@ class DeploymentAdmin(admin.ModelAdmin):
 
 
 class SensorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'serial_number', 'deployment', 'enabled', 'created', 'modified',)
+    list_display = ('id', 'name', 'serial_number', 'deployment', 'enabled', 'created', 'modified',)
     list_filter = ('enabled', 'deployment',)
 
 
