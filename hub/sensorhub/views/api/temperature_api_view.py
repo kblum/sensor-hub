@@ -38,7 +38,8 @@ class TemperatureApiView(APIView):
         for serial_number, temperature in request_readings.items():
             logger.debug("Temperature reading: %s => %f" % (serial_number, temperature))
             try:
-                sensor = Sensor.objects.enabled().get(serial_number=serial_number)
+                # attempt to find sensor based on serial number (case insensitive)
+                sensor = Sensor.objects.enabled().get(serial_number__iexact=serial_number)
                 reading = Reading.create_temperature_reading(sensor, temperature, save=True)
                 logger.debug("Created temperature reading with ID %d" % reading.id)
             except Sensor.DoesNotExist:
