@@ -2,6 +2,11 @@ from django.db import models
 from django.utils import timezone
 
 
+class EnabledQuerySet(models.QuerySet):
+    def enabled(self):
+        return self.filter(enabled=True)
+
+
 class TimestampedModel(models.Model):
     """
     Abstract model that provides automatic timestamp fields for creation and modification.
