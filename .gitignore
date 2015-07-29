@@ -61,5 +61,8 @@ target/
 # Virtual Environment
 venv
 
+# Collected static files
+/static/
+
 # PyCharm/IntelliJ IDE project files
 .idea
