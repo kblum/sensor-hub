@@ -19,5 +19,6 @@ from .sensorhub import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/temperatures/$', views.api.TemperatureApiView.as_view())
+    url(r'^api/temperatures/$', views.api.TemperatureApiView.as_view()),
+    url(r'^api/status/$', views.api.StatusApiView.as_view()),
 ]
