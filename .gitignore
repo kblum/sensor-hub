@@ -58,8 +58,13 @@ docs/_build/
 # PyBuilder
 target/
 
-# Virtual Environment
-venv
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+.direnv/
 
 # Collected static files
 /static/
