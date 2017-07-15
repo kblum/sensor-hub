@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Location, Deployment, Sensor, Reading, Token
+from .models import Location, Deployment, Sensor, Reading, Token, UserAgent
 
 
 class LocationAdmin(admin.ModelAdmin):
@@ -18,7 +18,7 @@ class SensorAdmin(admin.ModelAdmin):
 
 
 class ReadingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'sensor', 'deployment', 'temperature', 'created', 'modified',)
+    list_display = ('id', 'sensor', 'deployment', 'temperature', 'user_agent', 'created', 'modified',)
     list_filter = ('sensor', 'deployment',)
 
 
@@ -27,8 +27,13 @@ class TokenAdmin(admin.ModelAdmin):
     list_filter = ('enabled',)
 
 
+class UserAgentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user_agent_string',)
+
+
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Deployment, DeploymentAdmin)
 admin.site.register(Sensor, SensorAdmin)
 admin.site.register(Reading, ReadingAdmin)
 admin.site.register(Token, TokenAdmin)
+admin.site.register(UserAgent, UserAgentAdmin)

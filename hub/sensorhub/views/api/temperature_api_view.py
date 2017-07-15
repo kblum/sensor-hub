@@ -1,6 +1,6 @@
 import logging
 from hub.sensorhub.authentication import ApiBasicAuthentication
-from hub.sensorhub.models import Sensor, Reading
+from hub.sensorhub.models import Sensor, Reading, UserAgent
 from rest_framework import permissions
 from rest_framework.exceptions import ParseError
 from rest_framework.views import APIView
@@ -39,11 +39,20 @@ class TemperatureApiView(APIView):
             logger.debug("Temperature reading: %s => %f" % (serial_number, temperature))
             try:
                 # attempt to find sensor based on serial number (case insensitive)
-                reading = Reading.create_temperature_reading(sensor, temperature, save=True)
                 sensor = Sensor.get_sensor(serial_number)
+                user_agent = self._get_user_agent(request)
+                reading = Reading.create_temperature_reading(sensor, temperature, user_agent, save=True)
                 logger.debug("Created temperature reading with ID %d" % reading.id)
             except Sensor.DoesNotExist:
                 logger.error("Sensor with serial number '%s' does not exist", serial_number)
 
         # return empty response with HTTP 200 status code
         return Response()
+
+    @staticmethod
+    def _get_user_agent(request):
+        user_agent_string = request.META.get('HTTP_USER_AGENT', None)
+        if not user_agent_string:
+            return None
+        user_agent, created = UserAgent.objects.get_or_create(user_agent_string=user_agent_string)
+        return user_agent
