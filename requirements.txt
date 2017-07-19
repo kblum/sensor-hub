@@ -1,5 +1,5 @@
 Django==1.11.3
-dj-database-url==0.3.0
+dj-database-url==0.4.2
 django-debug-toolbar==1.8
 djangorestframework==3.6.3
-psycopg2==2.6.1
+psycopg2==2.7.1
