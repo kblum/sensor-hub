@@ -13,7 +13,7 @@ class Sensor(TimestampedModel):
     name = models.CharField(max_length=64)
     serial_number = models.CharField(max_length=16)
     enabled = models.BooleanField(default=True, db_index=True)
-    deployment = models.ForeignKey(Deployment, null=False, blank=False)
+    deployment = models.ForeignKey(Deployment, on_delete=models.CASCADE, null=False, blank=False)
 
     objects = EnabledQuerySet.as_manager()
 

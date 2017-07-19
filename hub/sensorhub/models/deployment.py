@@ -9,7 +9,7 @@ class Deployment(TimestampedModel):
 
     name = models.CharField(max_length=64)
     enabled = models.BooleanField(default=True, db_index=True)
-    location = models.ForeignKey(Location, null=False, blank=False)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, null=False, blank=False)
     description = models.TextField(null=False, blank=True)
 
     def __str__(self):

@@ -26,6 +26,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='reading',
             name='user_agent',
-            field=models.ForeignKey(blank=True, null=True, to='sensorhub.UserAgent'),
+            field=models.ForeignKey(blank=True, null=True, to='sensorhub.UserAgent', on_delete=models.SET_NULL),
         ),
     ]

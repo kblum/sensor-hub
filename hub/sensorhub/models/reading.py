@@ -7,10 +7,10 @@ class Reading(TimestampedModel):
     Reading from a specific temperature sensor.
     """
 
-    sensor = models.ForeignKey(Sensor, null=False, blank=False)
-    deployment = models.ForeignKey(Deployment, null=False, blank=False)
+    sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE, null=False, blank=False)
+    deployment = models.ForeignKey(Deployment, on_delete=models.CASCADE, null=False, blank=False)
     temperature = models.FloatField(null=False, blank=False)
-    user_agent = models.ForeignKey(UserAgent, null=True, blank=True)
+    user_agent = models.ForeignKey(UserAgent, on_delete=models.SET_NULL, null=True, blank=True)
 
     @staticmethod
     def create_temperature_reading(sensor, temperature, user_agent, save=False):

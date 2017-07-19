@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
                 ('created', models.DateTimeField(editable=False)),
                 ('modified', models.DateTimeField(editable=False)),
                 ('temperature', models.FloatField()),
-                ('deployment', models.ForeignKey(to='sensorhub.Deployment')),
+                ('deployment', models.ForeignKey(to='sensorhub.Deployment', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
                 ('modified', models.DateTimeField(editable=False)),
                 ('serial_number', models.CharField(max_length=16)),
                 ('enabled', models.BooleanField(default=True, db_index=True)),
-                ('deployment', models.ForeignKey(to='sensorhub.Deployment')),
+                ('deployment', models.ForeignKey(to='sensorhub.Deployment', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -66,11 +66,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='reading',
             name='sensor',
-            field=models.ForeignKey(to='sensorhub.Sensor'),
+            field=models.ForeignKey(to='sensorhub.Sensor', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='deployment',
             name='location',
-            field=models.ForeignKey(to='sensorhub.Location'),
+            field=models.ForeignKey(to='sensorhub.Location', on_delete=models.CASCADE),
         ),
     ]
