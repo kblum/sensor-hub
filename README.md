@@ -55,6 +55,10 @@ os.environ['SECRET_KEY'] = 'SECRET'
 # database
 os.environ['DATABASE_URL'] = 'sqlite:///hub//db.sqlite3'
 
+# comma-separated list of host/domain names that are valid for the site (required if DEBUG=False)
+# a value beginning with a period can be used as a sub-domain wildcard (e.g. .example.com will match www.example.com)
+os.environ['ALLOWED_HOSTS'] = 'example.com, sub.example.com'
+
 # list of timezones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 os.environ['TIME_ZONE'] = 'UTC'
 
