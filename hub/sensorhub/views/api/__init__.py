@@ -1,2 +1,5 @@
+from .base_api_view import BaseApiView
+from .base_authenticated_api_view import BaseAuthenticatedApiView
 from .temperature_api_view import TemperatureApiView
 from .status_api_view import StatusApiView
+from .status_authenticated_api_view import StatusAuthenticatedApiView

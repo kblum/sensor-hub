@@ -1,28 +1,17 @@
 import logging
-from hub.sensorhub.authentication import ApiBasicAuthentication
+from . import BaseAuthenticatedApiView
 from hub.sensorhub.models import Sensor, Reading, UserAgent
-from rest_framework import permissions
 from rest_framework.exceptions import ParseError
-from rest_framework.views import APIView
 from rest_framework.response import Response
 
 logger = logging.getLogger(__name__)
 
 
-class TemperatureApiView(APIView):
+class TemperatureApiView(BaseAuthenticatedApiView):
     """
     View for temperature API.
     Allows temperature readings to be recorded through POST requests.
-
-    Documentation for Django REST framework class based views:
-    http://www.django-rest-framework.org/api-guide/views/
     """
-
-    # authentication: http://www.django-rest-framework.org/api-guide/authentication/
-    authentication_classes = (ApiBasicAuthentication,)
-
-    # permissions: http://www.django-rest-framework.org/api-guide/permissions/
-    permission_classes = (permissions.IsAuthenticated,)
 
     # noinspection PyMethodMayBeStatic
     def post(self, request):
